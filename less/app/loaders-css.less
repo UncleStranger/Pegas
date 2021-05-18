@@ -1,0 +1,91 @@
+@import "../bootstrap/variables";
+
+@loader-color: @brand-success;
+// Loaders.CSS
+// -----------------------------------
+
+// Global background override
+.ball-pulse > div,
+.ball-grid-pulse > div,
+.square-spin > div,
+.ball-pulse-rise > div,
+.ball-rotate > div,
+.ball-rotate > div:before, .ball-rotate > div:after,
+.cube-transition > div,
+.ball-zig-zag > div,
+.ball-zig-zag-deflect > div,
+.ball-triangle-path > div,
+.ball-scale > div,
+.line-scale > div,
+.line-scale-party > div,
+.ball-scale-multiple > div,
+.ball-pulse-sync > div,
+.ball-beat > div,
+.line-scale-pulse-out > div,
+.line-scale-pulse-out-rapid > div,
+.ball-spin-fade-loader > div,
+.line-spin-fade-loader > div,
+.triangle-skew-spin > div,
+.ball-grid-beat > div,
+.semi-circle-spin > div {
+    background-color: @loader-color !important;
+}
+
+// custom override
+.ball-clip-rotate-multiple {
+    width: 1px;
+    > div {
+        border-color: @loader-color transparent @loader-color transparent !important;
+        &:last-child {
+            border-color: transparent  @loader-color transparent @loader-color !important;
+        }
+    }
+}
+.ball-clip-rotate > div {
+    border-color: @loader-color !important;
+    border-bottom-color: transparent !important;
+}
+.ball-clip-rotate-pulse > div {
+    &:first-child {
+        background-color: @loader-color !important;
+        top: 5px !important;
+        left: -8px !important;
+    }
+    &:last-child {
+        border-color: @loader-color transparent @loader-color transparent !important;
+    }
+}
+.square-spin > div,
+.ball-scale-ripple > div,
+.ball-scale-ripple-multiple > div {
+    border-color: @loader-color !important;
+}
+.pacman > div:first-of-type {
+    border-top-color: @loader-color !important;
+    border-left-color: @loader-color !important;
+    border-bottom-color: @loader-color !important;
+}
+.pacman > div:nth-child(2) {
+    border-top-color: @loader-color !important;
+    border-left-color: @loader-color !important;
+    border-bottom-color: @loader-color !important;
+}
+.pacman > div:nth-child(3), .pacman > div:nth-child(4), .pacman > div:nth-child(5), .pacman > div:nth-child(6) {
+    background-color: @loader-color !important;
+}
+
+.loader {
+    padding:25px;
+    > div {
+        display: inline-block;
+    }
+}
+
+.loader-center {
+    //height: 150px;
+    //padding: 25px;
+    text-align: center;
+    //> div {
+    //    display: inline-block;
+    //}
+}

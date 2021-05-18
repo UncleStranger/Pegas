@@ -1,0 +1,10 @@
+.idea
+.directory
+bower_components
+node_modules
+html/css
+html/js
+html/vendor
+html/views
+html/index.html
+html/favicon*

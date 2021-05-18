@@ -1,0 +1,47 @@
+@charset "UTF-8";
+
+@import "bootstrap/variables";
+@import "app/variables";
+
+//@import "bootstrap/mixins";
+
+//@import (less, reference) "../../../vendor/fontawesome/css/font-awesome.min.css";
+//@import (css, reference) "../bower_components/font-awesome/css/font-awesome.min.css";
+//@import (less) "../bower_components/font-awesome/css/font-awesome.min.css";
+
+@import (less) "font-awesome/less/font-awesome.less";
+@fa-font-path: "../vendor/font-awesome/fonts";
+
+
+
+// Global definition of media queries
+@import "app/media-queries";
+
+// Utilities
+@import "app/utils";
+
+// Mixins
+@import "mixins/border-radius";
+@import "mixins/cover-bg";
+
+// Import custom styles
+@import "app/custom";
+@import "app/loaders-css";
+@import "app/masonry-grid";
+// Components
+@import "app/animate";
+@import "app/loading-bar";
+
+// Plugins
+//@import "app/plugins";
+@import "app/datepicker";
+//@import "app/alerts";
+@import "app/notify";
+@import "app/animate";
+@import "app/dropzone";
+@import "app/ngDialog";
+@import "app/validation";
+@import "app/layout";
+@import "app/elements";
+@import "app/table-view";
+

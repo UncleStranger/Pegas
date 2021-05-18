@@ -1,0 +1,80 @@
+
+/* ---------------------------------------------------
+    SIDEBAR STYLE
+----------------------------------------------------- */
+
+.sidebar {
+  width: 350px;
+  position: fixed;
+  top: 0;
+  left: -350px;
+  height: 100vh;
+  z-index: 2001;
+  //background: #7386D5;
+  //color: #fff;
+  background: #fff;
+  transition: all 0.3s;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
+
+  // Hides the scrollbar only on desktops
+  @tablet-landscape: ~"only screen and (min-width: 1025px)";
+  @media @tablet-landscape {
+    .sidebar:not(.show-scrollbar) {
+      margin-right: -17px;
+      overflow-y: scroll;
+    }
+  }
+  &.active {
+    left: 0;
+  }
+
+  .sidebar-header {
+    padding: 12px;
+    //background: #6d7fcc;
+    background: #337ab7;
+    color: #fff;
+    margin-bottom: 20px;
+  }
+
+  .tree-view {
+    li {
+      .fa {
+        font-size: 1.2em;
+        margin-right: 5px;
+      }
+    }
+  }
+}
+
+#dismiss {
+  color: #fff;
+  text-align: center;
+  //background: #7386D5;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 35px;
+  height: 38px;
+  cursor: pointer;
+  font-size: 30px;
+  -webkit-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+}
+#dismiss:hover {
+  color: #444;
+  &:before {
+    border: solid 1px #fff;
+    transition: all 0.3s;
+  }
+}
+
+.overlay {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 2000;
+}

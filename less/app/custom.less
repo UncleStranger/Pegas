@@ -1,0 +1,348 @@
+@charset "UTF-8";
+@import (reference) "../bootstrap/variables";
+
+html, body{
+  height:100%;
+}
+
+.wrapper {
+  height: 100%;
+}
+.content-wrapper{
+  height: 100%;
+  padding-top: 50px;
+}
+
+[ng\:cloak], [ng-cloak], .ng-cloak {
+  display: none !important;
+}
+
+[ng-click],
+[data-ng-click],
+[x-ng-click] {
+  cursor: pointer;
+  cursor: hand;
+}
+
+// Loaders.css background
+//.loader{
+//  .loader-inner {
+//    > div {
+//      background-color: @brand-primary !important;
+//    }
+//  }
+//}
+
+.o-hidden {
+  overflow: hidden;
+}
+/*! ui-utils highlight filter selection */
+span.ui-match {
+  //.lh-border-radius(4);
+  //.lh-opacity(.5);
+  //border: solid 1px;
+  font-weight: bold;
+}
+
+.fa {
+  &.fa-danger {
+    color: red;
+  }
+}
+
+.text-red {
+  color: red;
+}
+
+/* Glyphicon to Font awesome
+------------------------------------*/
+.glyphicon {
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.glyphicon-star:before {
+  content: "\f005";
+}
+/**
+copied from
+.fa-star:before {
+  content: "\f005";
+}
+*/
+.glyphicon-star-empty::before {
+  content: "\f006";
+}
+.glyphicon-chevron-right:before {
+  content: "\f054";
+}
+.glyphicon-chevron-left:before {
+  content: "\f053";
+}
+.glyphicon-chevron-up:before {
+  content: "\f077";
+}
+.glyphicon-chevron-down:before {
+  content: "\f078";
+}
+
+/*Spaces
+------------------------------------*/
+.no-padding {
+  padding: 0 !important;
+}
+
+.no-margin {
+  margin: 0;
+}
+
+.no-top-space {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+.no-bottom-space {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.no-margin-bottom {
+  margin-bottom: 0 !important;
+}
+
+.no-padding-bottom {
+  padding-bottom: 0 !important;
+}
+
+.margin-left-5  { margin-left:5px;}
+.margin-left-10 { margin-left:10px;}
+.margin-left-15 { margin-left:15px;}
+.margin-left-20 { margin-left:20px;}
+.margin-left-25 { margin-left:25px;}
+.margin-left-30 { margin-left:30px;}
+.margin-left-35 { margin-left:35px;}
+.margin-left-40 { margin-left:40px;}
+.margin-left-45 { margin-left:45px;}
+.margin-left-50 { margin-left:50px;}
+.margin-left-55 { margin-left:55px;}
+.margin-left-60 { margin-left:60px;}
+
+.margin-top-5  { margin-top:5px;}
+.margin-top-10 { margin-top:10px;}
+.margin-top-15 { margin-top:15px;}
+.margin-top-20 { margin-top:20px;}
+.margin-top-25 { margin-top:25px;}
+.margin-top-30 { margin-top:30px;}
+.margin-top-35 { margin-top:35px;}
+.margin-top-40 { margin-top:40px;}
+.margin-top-45 { margin-top:45px;}
+.margin-top-50 { margin-top:50px;}
+.margin-top-55 { margin-top:55px;}
+.margin-top-60 { margin-top:60px;}
+
+.margin-bottom-5  { margin-bottom:5px;}
+.margin-bottom-10 { margin-bottom:10px;}
+.margin-bottom-15 { margin-bottom:15px;}
+.margin-bottom-20 { margin-bottom:20px;}
+.margin-bottom-25 { margin-bottom:25px;}
+.margin-bottom-30 { margin-bottom:30px;}
+.margin-bottom-35 { margin-bottom:35px;}
+.margin-bottom-40 { margin-bottom:40px;}
+.margin-bottom-45 { margin-bottom:45px;}
+.margin-bottom-50 { margin-bottom:50px;}
+.margin-bottom-55 { margin-bottom:55px;}
+.margin-bottom-60 { margin-bottom:60px;}
+
+@media (max-width: 768px) {
+  .sm-margin-bottom-10 {
+    margin-bottom: 10px;
+  }
+  .sm-margin-bottom-20 {
+    margin-bottom: 20px;
+  }
+  .sm-margin-bottom-30 {
+    margin-bottom: 30px;
+  }
+  .sm-margin-bottom-40 {
+    margin-bottom: 40px;
+  }
+  .sm-margin-bottom-50 {
+    margin-bottom: 50px;
+  }
+  .sm-margin-bottom-60 {
+    margin-bottom: 60px;
+  }
+}
+
+@media (max-width: 992px) {
+  .md-margin-bottom-10 {
+    margin-bottom: 10px;
+  }
+  .md-margin-bottom-20 {
+    margin-bottom: 20px;
+  }
+  .md-margin-bottom-30 {
+    margin-bottom: 30px;
+  }
+  .md-margin-bottom-40 {
+    margin-bottom: 40px;
+  }
+  .md-margin-bottom-50 {
+    margin-bottom: 50px;
+  }
+  .md-margin-bottom-60 {
+    margin-bottom: 60px;
+  }
+}
+
+.input-xs {
+  height: 22px;
+  padding: 2px 5px;
+  font-size: 12px;
+  line-height: 1.5; /* If Placeholder of the input is moved up, rem/modify this. */
+  border-radius: 3px;
+}
+// http://stackoverflow.com/questions/20272843/sliding-between-route-transition-angularjs
+
+.slide-animate.ng-enter, .slide-animate.ng-leave{
+  -webkit-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 2s;
+  -moz-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 2s;
+  -o-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 2s;
+  transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 2s;
+}
+
+
+.slide-animate.ng-enter.ng-enter-active {
+  position: absolute;
+  left: 1300px;
+}
+
+.slide-animate.ng-enter {
+  left: 0;
+}
+
+.slide-animate.ng-leave.ng-leave-active {
+  position: absolute;
+  left: -1700px;
+}
+
+.slide-animate.ng-leave {
+  right: 0;
+}
+
+// Fnt
+.fa.spinning {
+  animation: spin 1s infinite linear;
+  -webkit-animation: spin2 1s infinite linear;
+}
+@keyframes spin {
+  from {
+    transform: scale(1) rotate(0deg);
+  }
+  to {
+    transform: scale(1) rotate(360deg);
+  }
+}
+@-webkit-keyframes spin2 {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+@media (min-width: 768px) {
+  .navbar-nav {
+    width: 100%;
+    float: none;
+  }
+  .navbar-nav > li {
+    float: none;
+    display: inline-block;
+  }
+  .navbar-nav > li.navbar-right {
+    float: right !important;
+  }
+}
+
+.body-content{
+  margin-top: 50px;
+}
+
+.panel-collapse-heading {
+  vertical-align: middle;
+
+  &:after {
+    font-size: 18px;
+    float: right;
+    color: #525552;
+    content: "\f078";
+    /*display: inline-block;*/
+    font-family: FontAwesome;
+    -moz-font-feature-settings: normal;
+    -webkit-font-feature-settings: normal;
+    font-feature-settings: normal;
+    font-kerning: auto;
+    font-language-override: normal;
+    font-size-adjust: none;
+    font-stretch: normal;
+    font-style: normal;
+    font-synthesis: weight style;
+    font-variant: normal;
+    font-weight: normal;
+    line-height: 1;
+    text-rendering: auto;
+    margin-top: 2px;
+  }
+
+  &.collapsed:after {
+    content: "\f054";
+  }
+}
+
+.scroll-container {
+  position: relative;
+  //position: fixed;
+  width: 100%;
+  //height:600px;
+  height: 90vh;
+  background-color: transparent;
+  box-sizing: border-box;
+  cursor: grab;
+  overflow: hidden;
+}
+/*
+  @media (min-width: @screen-sm-min) {
+    width: @container-sm;
+  }
+  @media (min-width: @screen-md-min) {
+    width: @container-md;
+  }
+  @media (min-width: @screen-lg-min) {
+    width: @container-lg;
+  }
+*/
+
+.main-spinner{
+  position: absolute;
+  z-index: 3000;
+  //right: 30px;
+  //top: 30px;
+  left: 50%;
+  top: 120px;
+  color: #F74422;
+}
+
+.label-events {
+  padding: .2em .4em .3em;
+  margin-left: 5px;
+  &.label-events-danger{
+    background-color: red;
+  }
+  &.label-events-success {
+    background-color: #5cb85c
+  }
+}

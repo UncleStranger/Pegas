@@ -1,0 +1,48 @@
+doctype html
+html(lang="ru", data-ng-app="pegas", data-ng-strict-di)
+    head
+        meta(charset="utf-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1, maximum-scale=1")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge;")
+        title(data-ng-bind="::pageTitle()")
+
+        //base(href="/app/")
+        link(rel="icon", type="image/png", href="favicon-64x64.png", sizes="96x96")
+        link(rel="icon", type="image/png", href="favicon-32x32.png", sizes="32x32")
+        link(rel="icon", type="image/png", href="favicon-16x16.png", sizes="16x16")
+        link(rel="shortcut icon", type="image/png", href="favicon-16x16.png", sizes="16x16")
+
+
+        // Bootstrap styles
+        link(rel="stylesheet", href="css/bootstrap.css", data-ng-if="!app.layout.isRTL")
+
+        //-
+          link(rel="stylesheet", href="css/bootstrap-rtl.css", data-ng-if="app.layout.isRTL")
+
+        // Application styles
+        link(rel="stylesheet", href="css/app.css", data-ng-if="!app.layout.isRTL")
+
+        //-
+          link(rel="stylesheet", href="css/app-rtl.css", data-ng-if="app.layout.isRTL")
+
+        // Themes
+        link(rel="stylesheet", ng-href="{{app.layout.theme}}", data-ng-if="app.layout.theme")
+    //
+        script(id="envSettings", type="application/json").
+            {
+                "urls" : {
+                },
+                "apiBase" : "http://192.168.100.235/api/",
+                "oauthSettings"  : {
+                }
+            }
+    body
+        div(data-preloader)
+        .wrapper(data-ui-view="", data-autoscroll="false")
+        .overlay(ng-show="app.sidebarOpen", ng-click="app.sidebarOpen = false")
+
+        script(src="js/base.js")
+        script(src="js/app.js")
+
+        //- templates:js
+        //- endinject

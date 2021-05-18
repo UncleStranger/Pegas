@@ -1,0 +1,62 @@
+.container-fluid.margin-top-20.table-view
+    .row
+        .col-md-8.col-md-offset-2
+            h3
+                |{{vm.projectName}}
+                a.margin-left-5(ui-sref="app.home({projectName: vm.projectName})") (схема)
+    .row
+        .col-md-8.col-md-offset-2
+            div.main-spinner(ng-if="vm.loading && (!vm.pointsGroups || !vm.dangerPointsGroups)")
+                i.fa.fa-spinner.fa-spin.fa-4x.fa-fw
+    .row(ng-if="vm.dangerPointsGroups")
+        .col-md-8.col-md-offset-2
+            .panel.panel-danger
+                .panel-heading.panel-collapse-heading.collapsed(data-toggle="collapse", href="#panelDanger", role="button")
+                    | Сигнализация
+                    span.text-success.margin-left-5(ng-if="vm.loading && vm.dangerPointsGroups")
+                        i.fa.fa-spinner.fa-spin.fa-fw.fa-lg
+                .panel-collapse.collapse(id="panelDanger")
+                    .panel-body
+                        table.table.table-bordered.table-hover.table-condensed
+                            thead
+                                tr
+                                    th(style="width: 100px")
+                                    th(style="width: 50%") Параметр
+                                    th(style="width: 50%") Значение
+                            tbody(ng-repeat="(objId, points) in vm.dangerPointsGroups")
+                                tr
+                                    th(colspan="3")
+                                        strong {{vm.objectsDic[objId]}}
+                                tr(ng-repeat="p in points")
+                                    td.text-center
+                                        i.fa.fa-exclamation-triangle.text-red.margin-left-5.pull-right(ng-if="p.hasInvalidFlag")
+                                        //div(ng-class="['lamp', '{{vm.getLampClass(p)}}']")
+                                        div(ng-class="['lamp', vm.getLampClass(p)]")
+                                    td {{p.name}}
+                                    td
+                                        | {{p.value}}
+    .row(ng-if="vm.pointsGroups")
+        .col-md-8.col-md-offset-2
+            .panel.panel-success
+                .panel-heading.panel-collapse-heading.collapsed(data-toggle="collapse", href="#panelDefault", role="button")
+                    | Параметры
+                    span.text-success.margin-left-5(ng-if="vm.loading && vm.pointsGroups")
+                        i.fa.fa-spinner.fa-spin.fa-fw.fa-lg
+                .panel-collapse.collapse(id="panelDefault")
+                    .panel-body
+                        table.table.table-bordered.table-hover.table-condensed
+                            thead
+                                tr
+                                    th(style="width: 100px")
+                                    th(style="width: 50%") Параметр
+                                    th(style="width: 50%") Значение
+                            tbody(ng-repeat="(objId, points) in vm.pointsGroups")
+                                tr
+                                    th(colspan="3")
+                                        strong {{vm.objectsDic[objId]}}
+                                tr(ng-repeat="p in points")
+                                    td.text-center
+                                        i.fa.fa-exclamation-triangle.fa-lg.text-red.margin-left-5.pull-right(ng-if="p.hasInvalidFlag")
+                                    td {{p.name}}
+                                    td
+                                        |{{p.value}}

@@ -1,0 +1,41 @@
+// START Top Navbar
+nav.navbar.navbar-inverse.navbar-fixed-top(role="navigation", ng-controller="TopNavbarCtrl as vm")
+  .container
+    .navbar-header
+      //.navbar-brand.hidden-xs(role="banner") TEnergo
+      button.navbar-toggle(type="button", data-toggle="collapse", data-target=".navbar-collapse")
+        span.sr-only Показать навигацию
+        span.icon-bar(aria-hidden="true")
+        span.icon-bar(aria-hidden="true")
+        span.icon-bar(aria-hidden="true")
+    //  .navbar-brand(role="banner") TEnergo
+    div.navbar-collapse.collapse
+      ul.nav.navbar-nav
+        li.dropdown(ng-if="$stateParams.projectName")
+          a.dropdown-toggle(role="button", aria-expanded="false", href="javascript:void(0);", data-toggle="dropdown")
+            | Меню объекта
+            span.caret(aria-hidden="true")
+        li
+          a(ui-sref="app.config", ui-sref-active="active")
+            | Настройки
+        //-
+          li
+            a(ui-sref="app.browser", ui-sref-active="active")
+              | Браузер
+        //-
+          li.dropdown
+            a.dropdown-toggle(role="button", aria-expanded="false", href="#", data-toggle="dropdown")
+              | Меню
+              span.caret(aria-hidden="true")
+            ul.dropdown-menu(role="menu")
+              li
+                a(href="#", ui-sref-active="active") Пункт меню 1
+              li
+                a(href="#", ui-sref-active="active") Пункт меню 2
+        li.navbar-right(ng-if="!!profile")
+          a(href="javascript:void(0)")
+            |{{profile.name}}
+            span.margin-left-10.text-white(ng-click="logout()", aria-hidden="true")
+              em.fa.fa-sign-out
+
+// END Top Navbar

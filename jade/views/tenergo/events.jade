@@ -1,0 +1,38 @@
+.container.margin-top-20.events
+    .row
+        .col-md-12
+            h3
+                span(ng-if="vm.projectName") События {{::vm.projectName}}
+                span(ng-if="!vm.projectName") Все события
+                span.text-red(ng-if="vm.loading")
+                    i.fa.fa-spinner.fa-spin.fa-fw.spinner
+
+
+    .row(ng-if="vm.eventsGroups && !vm.hasEvents()")
+        .col-md-12
+            .alert.alert-success
+                | События не найдены
+
+    .row(ng-if="vm.hasEvents()")
+        .col-md-12
+            div(ng-repeat="(groupName, events) in vm.eventsGroups")
+            .panel.panel-default(role="panel", ng-repeat="(groupName, events) in vm.eventsGroups")
+                .panel-heading
+                    strong {{groupName}}
+                ul.list-group
+                    li(ng-repeat="ev in events", ng-class="['list-group-item', 'list-group-item-' + vm.getColorClass(ev)]")
+                        div
+                            strong(ng-if="!ev.projectName") {{ev.corePointDisplayName}}:
+                            a(ng-if="ev.projectName", ui-sref="app.home({projectName: ev.projectName})")
+                                strong {{ev.corePointDisplayName}}:
+                            | &nbsp;{{ev.message}}
+
+                        .row
+                            .col-sm-8
+                                div(ng-if="ev.points.length")
+                                    small: strong Значение:
+                                        span.margin-right-5(ng-repeat="p in ev.points")
+                                            span {{(p.value | myDecimal:2)}}
+                                            span(ng-if="!$last") &nbsp;/&nbsp;
+                            .col-sm-4
+                                div.text-right.small.text-muted {{ ev.timeStamp | date:'dd.MM.yyyy HH:mm:ss' }}

@@ -1,0 +1,14 @@
+.container-fluid.margin-top-20
+    .row
+        .col-md-12
+            div.main-spinner
+                i.fa.fa-spinner.fa-spin.fa-4x.fa-fw(ng-if="vm.schemeUrl && (!vm.schemeLoaded || !vm.diagram)")
+    .row
+        .col-md-12
+            .panel.panel-default(ng-repeat="obj in vm.objects track by obj.id")
+                .panel-heading.panel-collapse-heading.collapsed(data-toggle="collapse", href="#p{{::obj.id}}", role="button")
+                    |{{::obj.name}}
+                .panel-collapse.collapse(id="p{{::obj.id}}")
+                    .panel-body
+                        pre {{::obj | json:4}}
+

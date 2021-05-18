@@ -1,0 +1,29 @@
+.container.margin-top-20.events
+    .row
+        .col-md-12
+            h3
+                span Настройки
+                span.text-red(ng-if="vm.loading")
+                    i.fa.fa-spinner.fa-spin.fa-fw.spinner
+
+
+    .row
+        .col-md-12
+            .panel.panel-default(role="panel")
+                .panel-heading
+                    | Настройки сети
+                .panel-body
+                    form
+                        fieldset(ng-disabled="vm.loading")
+                            .row.margin-bottom-10
+                                .col-md-6(ng-repeat="(name, value) in vm.config")
+                                    div.form-group
+                                        label {{::name}}
+                                        input.form-control(type="text", ng-model="vm.config[name]")
+                            .row
+                                .col-xs-12.text-right
+                                    button.btn.btn-success(type="button", ng-click="vm.save()") Save
+
+    .row
+        .col-md-12
+            .well {{vm.config | json:4}}

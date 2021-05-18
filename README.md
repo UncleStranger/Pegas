@@ -1,0 +1,2 @@
+# Pegas
+Pegas configuration manager.

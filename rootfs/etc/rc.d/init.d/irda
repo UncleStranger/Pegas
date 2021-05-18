@@ -1,0 +1,29 @@
+#!/bin/sh
+#
+# irda      This starts and stops IrDA
+# Generated in irattach.spec 
+#
+[ -f /usr/sbin/irattach ] || exit 0
+case "$1" in
+	start)
+		# Attach irda device
+		echo -n "Starting IrDA: "
+		/usr/sbin/irattach /dev/ttyS2 -s
+		touch /var/lock/subsys/irda
+		echo
+		;;
+	stop)
+		# Stop service
+		echo -n "Shutting down IrDA: "
+		killall irattach
+		rm -f /var/lock/subsys/irda
+		echo
+		;;
+	restart)
+		$0 stop
+		$0 start
+	*)
+		echo "Usage: $0 {start|stop|restart}"
+		exit 1
+esac
+exit 0

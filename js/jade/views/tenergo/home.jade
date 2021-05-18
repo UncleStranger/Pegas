@@ -1,0 +1,196 @@
+.container-fluid.mnemo
+    .row
+        .col-md-12
+            div.main-spinner(ng-if="vm.schemeUrl && (!vm.schemeLoaded || !vm.diagram)")
+                i.fa.fa-spinner.fa-spin.fa-4x.fa-fw
+
+            .scroll-container(ng-if="vm.schemeUrl && vm.diagram", kinetic)
+                .shape(
+                    ng-repeat="s in vm.diagram.shapes",
+                    ng-style="::{'left': s.positionX, 'top': s.positionY, 'width': s.width, 'height': s.height, '-webkit-transform': s.transform, '-moz-transform': s.transform, '-ms-transform': s.transform, '-o-transform': s.transform, 'transform': s.transform}",
+                    ng-class="{'selected': s === vm.selectedShape}",
+                    ng-click="vm.selectShape(s)",
+                    ng-switch="s.presenterViewClassName"
+                )
+                    i.fa.fa-exclamation-triangle.fa-lg.invalid-flag(ng-if="s.hasInvalidFlag")
+
+                    .analog-point(
+                        ng-switch-when="ElementsLib.View.AnalogPointView",
+                        ng-style="::{'width': s.width - 4}"
+                    )
+                        | {{vm.points[s.points[0]].value }}
+
+                    .analog-point-percent(
+                        ng-switch-when="ElementsLib.View.AnalogPointPercentView",
+                        ng-style="::{'width': s.width - 4}"
+                    )
+                        | {{vm.points[s.points[0]].value | number:0 }}%
+
+                    .analog-point-wide(
+                        ng-switch-when="ElementsLib.View.AnalogPointWideView",
+                        ng-style="{'width': s.width - 8, 'height': s.height - 14}"
+                    )
+                        | {{vm.points[s.points[0]].value }}
+
+                    .boiler(ng-switch-when="ElementsLib.View.BoilerView")
+                        .flame(ng-if="vm.points[s.points[0]].value")
+                        .boiler-alarm-main(ng-if="vm.points[s.points[3]].value")
+                        .boiler-alarm-burner-main(ng-if="vm.points[s.points[4]].value")
+                        .boiler-off-main(ng-if="!vm.points[s.points[1]].value")
+                        .boiler-off(ng-if="!vm.points[s.points[1]].value")
+                        .boiler-on(ng-if="vm.points[s.points[1]].value")
+                        .manual_control(ng-if="vm.points[s.points[2]].value")
+                        .alarm_boiler(ng-if="vm.points[s.points[3]].value")
+                        .alarm_burner(ng-if="vm.points[s.points[4]].value")
+
+                    div(ng-switch-when="ElementsLib.View.LostConnectionView", ng-if="'false'")
+
+                    div(ng-switch-when="ElementsLib.View.DiscretePointCompactView")
+                        div(ng-class="['lamp', vm.getLampClass(vm.points[s.points[0]])]")
+
+                    div(ng-switch-when="ElementsLib.View.DiscretePointView")
+                        div(ng-class="['lamp', vm.getLampClass(vm.points[s.points[0]])]")
+
+                    .driven-2Way-h(ng-switch-when="ElementsLib.View.Driven2WayValveHorizontalView")
+                        .manual(ng-if="vm.points[s.points[0]].value")
+
+                    .driven-2Way-vl(ng-switch-when="ElementsLib.View.Driven2WayValveVerticalLeftView")
+                        .manual(ng-if="vm.points[s.points[0]].value")
+
+                    .driven-3Way-hb(ng-switch-when="ElementsLib.View.Driven3WayValveHorizontalBottomView")
+                        .manual(ng-if="vm.points[s.points[0]].value")
+
+                    .driven-3Way-h(ng-switch-when="ElementsLib.View.Driven3WayValveHorizontalView")
+                        .manual(ng-if="vm.points[s.points[0]].value")
+
+                    .driven-3Way-vl(ng-switch-when="ElementsLib.View.Driven3WayValveVerticalLeftView")
+                        .manual(ng-if="vm.points[s.points[0]].value")
+
+                    .driven-3Way-vr(ng-switch-when="ElementsLib.View.Driven3WayValveVerticalRightView")
+                        .manual(ng-if="vm.points[s.points[0]].value")
+
+                    .valve-2way-gas(ng-switch-when="ElementsLib.View.GasValveHorizontalView")
+                        .valve-closed(ng-if="vm.points[s.points[0]].value")
+
+                    //-div.analog-point(ng-switch-when="ElementsLib.View.AnalogPointView", ng-style="::{'width': s.width - 8, 'height': s.height - 14}")
+
+                    //- Hide discrete labels on buttons
+                    div(ng-switch-when="ElementsLib.View.ParameterLoadButtonView", ng-if="'false'")
+
+                    .manometer-complex(ng-switch-when="ElementsLib.View.ManometerViewComplex")
+                        .analog-point(ng-style="::{width: s.width * 0.57}")
+                            | {{vm.points[s.points[0]].value }}
+
+                    .thermometer-complex(ng-switch-when="ElementsLib.View.ThermometerViewComplex")
+                        .analog-point
+                            | {{vm.points[s.points[0]].value }}
+
+                    .pump-simple(ng-switch-when="ElementsLib.View.PumpView")
+                        .pump_inactive
+                        .pump_anim(ng-if="vm.points[s.points[0]].value")
+                        .pump_alarm_main(ng-if="vm.points[s.points[3]].value")
+                        .pump_off_main(ng-if="!vm.points[s.points[1]].value")
+                        .pump_on(ng-if="vm.points[s.points[1]].value")
+                        .pump_off(ng-if="!vm.points[s.points[1]].value")
+                        .pump_manual(ng-if="vm.points[s.points[2]].value")
+                        .pump_alarm(ng-if="vm.points[s.points[3]].value")
+
+                    .pump-frp(ng-switch-when="ElementsLib.View.PumpViewFRP")
+                        .pumpFRP_inactive
+                        .pumpFRP_anim(ng-if="vm.points[s.points[0]].value")
+                        .pumpFRP_alarm_main(ng-if="vm.points[s.points[3]].value")
+                        .pumpFRP_off_main(ng-if="!vm.points[s.points[1]].value")
+                        .pumpFRP_on(ng-if="vm.points[s.points[1]].value")
+                        .pumpFRP_off(ng-if="!vm.points[s.points[1]].value")
+                        .pumpFRP_manual(ng-if="vm.points[s.points[2]].value")
+                        .pumpFRP_alarm(ng-if="vm.points[s.points[3]].value")
+                        .analog-point
+                            | {{vm.points[s.points[4]].value | number:0 }}%
+
+
+                    .ukke-old(ng-switch-when="ElementsLib.View.UKKEOldView")
+                        .line1
+                            div(ng-class="['lamp', vm.getLampClass(vm.points[s.points[0]])]")
+                                i.fa.fa-exclamation-triangle.invalid-flag(ng-if="vm.points[s.points[0]].hasInvalidFlag")
+                        .line2
+                            .analog-point.p1
+                                | {{vm.points[s.points[1]].value}}
+                                i.fa.fa-exclamation-triangle.invalid-flag(ng-if="vm.points[s.points[1]].hasInvalidFlag")
+                            .analog-point.p2
+                                | {{vm.points[s.points[2]].value}}
+                                i.fa.fa-exclamation-triangle.invalid-flag(ng-if="vm.points[s.points[2]].hasInvalidFlag")
+                            .analog-point.p3
+                                | {{vm.points[s.points[3]].value}}
+                                i.fa.fa-exclamation-triangle.invalid-flag(ng-if="vm.points[s.points[3]].hasInvalidFlag")
+                        .line3
+                            .analog-point.p4
+                                | {{vm.points[s.points[4]].value}}
+                                i.fa.fa-exclamation-triangle.invalid-flag(ng-if="vm.points[s.points[4]].hasInvalidFlag")
+
+                    .ukke(ng-switch-when="ElementsLib.View.UKKEView")
+                        .line1
+                            div(ng-class="['lamp', vm.getLampClass(vm.points[s.points[0]])]")
+                                i.fa.fa-exclamation-triangle.invalid-flag(ng-if="vm.points[s.points[0]].hasInvalidFlag")
+                        .line2
+                            .analog-point.p1
+                                | {{vm.points[s.points[1]].value}}
+                                i.fa.fa-exclamation-triangle.invalid-flag(ng-if="vm.points[s.points[1]].hasInvalidFlag")
+                            .analog-point.p2
+                                | {{vm.points[s.points[2]].value}}
+                                i.fa.fa-exclamation-triangle.invalid-flag(ng-if="vm.points[s.points[2]].hasInvalidFlag")
+                            .analog-point.p3
+                                | {{vm.points[s.points[3]].value}}
+                                i.fa.fa-exclamation-triangle.invalid-flag(ng-if="vm.points[s.points[3]].hasInvalidFlag")
+                        .line3
+                            .analog-point.p4
+                                | {{vm.points[s.points[4]].value}}
+                                i.fa.fa-exclamation-triangle.invalid-flag(ng-if="vm.points[s.points[4]].hasInvalidFlag")
+                            .analog-point.p5
+                                | {{vm.points[s.points[5]].value}}
+                                i.fa.fa-exclamation-triangle.invalid-flag(ng-if="vm.points[s.points[5]].hasInvalidFlag")
+
+                    .reg-2way-valve-state-h(ng-switch-when="ElementsLib.View.Regulating2wayValveStateHorizontalView")
+                        .reg-2way-valve-state-h_open(ng-if="!vm.points[s.points[0]].value")
+                        .reg-2way-valve-state-h_close(ng-if="vm.points[s.points[0]].value")
+
+                    .driven-2way-valve-sh(ng-switch-when="ElementsLib.View.Driven2wayValveStateHorizontalView")
+                        .valve-open(ng-if="!vm.points[s.points[0]].value")
+                        .valve-close(ng-if="vm.points[s.points[0]].value")
+                        .valve-manual(ng-if="vm.points[s.points[1]].value")
+
+                    .driven-2way-valve-sv(ng-switch-when="ElementsLib.View.Driven2wayValveStateVerticalView")
+                        .valve-open(ng-if="!vm.points[s.points[0]].value")
+                        .valve-close(ng-if="vm.points[s.points[0]].value")
+                        .valve-manual(ng-if="vm.points[s.points[1]].value")
+
+                    .driven-2way-valve-state-percents-h(ng-switch-when="ElementsLib.View.Driven2wayValveStatePercentsHorizontalView")
+                        .valve-open(ng-if="!vm.points[s.points[0]].value")
+                        .valve-close(ng-if="vm.points[s.points[0]].value")
+                        .valve-manual(ng-if="vm.points[s.points[1]].value")
+                        .analog-point
+                            | {{vm.points[s.points[2]].value | number : 0}}%
+
+
+                    .auto-2way-valve-hv(ng-switch-when="ElementsLib.View.Automatic2WayValveHorizontalView")
+
+                    .cwp(ng-switch-when="ElementsLib.View.CWPView")
+
+                    .div(ng-switch-when="ElementsLib.View.ScriptPushButtonView")
+                        .btn.btn-sm.btn-warning(ng-if="s.targetPrj", ng-click="vm.openChildPrj(s.targetPrj)")
+                            | {{s.elementLabel}}
+
+                    .param-load-button(ng-switch-when="ElementsLib.View.ParameterLoadButtonView")
+                        .btn.btn-sm.btn-default
+                            | {{s.elementLabel}}
+
+                    .data-block.label.label-warning(ng-switch-default)
+                        |{{vm.points[s.points[0]].value }}
+
+                img(ng-src="{{vm.schemeUrl}}", imageonload="vm.imageOnLoad(vm.schemeUrl)")
+
+    .row(ng-if="vm.isDebug && vm.selectedShape")
+        .col-md-12
+            pre {{vm.selectedShape | json:4}}
+
+
+

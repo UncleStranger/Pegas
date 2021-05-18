@@ -1,0 +1,21 @@
+.ngdialog {
+  z-index: 1020 !important; // 1040 is used for Notify
+  &.ngdialog-theme-default{
+    .ngdialog-content {
+      line-height: 1 !important;
+      font-size: 1em !important;
+    }
+    &.custom-width-600 {
+      .ngdialog-content {
+        width: 600px;
+      }
+    }
+    &.custom-width-800 {
+      .ngdialog-content {
+        width: 800px;
+      }
+    }
+  }
+}
+
+//.ngdialog.ngdialog-theme-default .ngdialog-content

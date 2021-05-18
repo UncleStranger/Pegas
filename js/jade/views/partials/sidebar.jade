@@ -1,0 +1,16 @@
+nav.sidebar(ng-controller="SidebarCtrl as vm", ng-class="{active: app.sidebarOpen}")
+    div#dismiss(ng-click="app.sidebarOpen = !app.sidebarOpen")
+        i.fa.fa-chevron-circle-left
+    .sidebar-header
+        h4
+            | Выберите объект
+    div.text-center.text-primary(ng-if="vm.menuLoading")
+        i.fa.fa-spinner.fa-spin.fa-3x.fa-fw
+    abn-tree.tree-view(
+        ng-if="!vm.menuLoading",
+        tree-data="vm.menuItems",
+        tree-control="vm.treeControl",
+        on-select="vm.onTreeSelect(branch)",
+        expand-level="1",
+        initial-selection="{{vm.initialSelection}}"
+    )

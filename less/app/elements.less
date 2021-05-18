@@ -1,0 +1,542 @@
+.mnemo {
+  background: #aabb88;
+  //height: 100%;
+}
+/*
+.fa() {
+  display: inline-block;
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.fa-icon(@content) {
+  .fa;
+  &:before { content: @content; }
+}
+
+.@{fa-css-prefix} {
+  .fa;
+}
+*/
+
+.shape {
+  position: absolute;
+
+  /* Internet Explorer 10 */
+  display: -ms-flexbox;
+  -ms-flex-pack: center;
+  -ms-flex-align: center;
+
+  /* Firefox */
+  display: -moz-box;
+  -moz-box-pack: center;
+  -moz-box-align: center;
+
+  /* Safari, Opera, and Chrome */
+  display: -webkit-box;
+  -webkit-box-pack: center;
+  -webkit-box-align: center;
+
+  /* W3C */
+  display: box;
+  box-pack: center;
+  box-align: center;
+
+  &.selected {
+    border-color: #00ff00;
+    outline: 0;
+    .box-shadow(~"inset 0 5px 5px rgba(0,0,0,.085), 0 0 6px #00ff00");
+    z-index: 100;
+  }
+  .invalid-flag {
+    //outline: 0;
+    position: absolute;
+    color: #ff0000;
+    z-index: 200;
+    right: 3px;
+    top: 40%;
+  }
+
+  .data-block {
+    color: #000;
+    //position: absolute;
+    width: 43px;
+    .border-radius(4px);
+  }
+
+  ////// Boiler //////
+  .boiler {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    //.cover-bg("../i/boiler_empty.png");
+
+    .flame {
+      .cover-bg("../i/flame.png");
+    }
+    .boiler-alarm-main {
+      .cover-bg("../i/boiler_AlarmMain.png");
+    }
+    .boiler-alarm-burner-main {
+      .cover-bg("../i/boiler_AlarmBurnerMain.png");
+    }
+    .boiler-off-main {
+      .cover-bg("../i/boiler_OffMain.png");
+    }
+    .boiler-off {
+      .cover-bg("../i/boiler_off.png");
+    }
+    .boiler-on {
+      .cover-bg("../i/boiler_on.png");
+    }
+    .manual_control {
+      .cover-bg("../i/manual_control.png");
+    }
+    .alarm_boiler {
+      .cover-bg("../i/alarm_boiler.png");
+    }
+    .alarm_burner {
+      .cover-bg("../i/alarm_burner.png");
+    }
+  }
+
+  ////// Pump //////
+
+  .pump-simple {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    //.cover-bg("../i/pump.png");
+    /*
+    .pump {
+      .cover-bg("../i/pumpFRP.png");
+    }
+    */
+    .pump_alarm_main {
+      .cover-bg("../i/pumpFRP_AlarmMain.png");
+    }
+
+    .pump_off_main {
+      .cover-bg("../i/pumpFRP_OffMain.png");
+    }
+
+    .pump_anim {
+      .cover-bg("../i/pumpFRPAnim.png");
+    }
+
+    .pump_inactive {
+      .cover-bg("../i/pumpFRP_inactive.png");
+    }
+    .pump_off {
+      .cover-bg("../i/pumpFRP_off.png");
+    }
+    .pump_on {
+      .cover-bg("../i/pumpFRP_on.png");
+    }
+
+    .pump_manual {
+      .cover-bg("../i/pumpFRP_manual.png");
+    }
+    .pump_alarm {
+      .cover-bg("../i/pumpFRP_alarm.png");
+    }
+  }
+  ////// pumpFRP //////
+  .pump-frp {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    //text-align: left;
+    //.cover-bg("../i/pumpFRP.png");
+
+    .analog-point {
+      position: absolute;
+      bottom: 50%;
+      left: 8%;
+      width: 29%;
+      height: 20px;
+    }
+/*
+    .pumpFRP_inactive {
+      .cover-bg("../i/pumpFRP_inactive.png");
+    }
+    .pumpFRP_off {
+      .cover-bg("../i/pumpFRP_off.png");
+    }
+    .pumpFRP_on {
+      .cover-bg("../i/pumpFRP_on.png");
+    }
+    .pumpFRP_off {
+      .cover-bg("../i/pumpFRP_off.png");
+    }
+    .pumpFRP_manual {
+      .cover-bg("../i/pumpFRP_manual.png");
+    }
+    .pumpFRP_alarm {
+      .cover-bg("../i/pumpFRP_alarm.png");
+    }
+*/
+    .pumpFRP_alarm_main {
+      .cover-bg("../i/pumpFRP_AlarmMain.png");
+    }
+
+    .pumpFRP_off_main {
+      .cover-bg("../i/pumpFRP_OffMain.png");
+    }
+
+    .pumpFRP_anim {
+      .cover-bg("../i/pumpFRPAnim.png");
+    }
+
+    .pumpFRP_inactive {
+      .cover-bg("../i/pumpFRP_inactive.png");
+    }
+    .pumpFRP_off {
+      .cover-bg("../i/pumpFRP_off.png");
+    }
+    .pumpFRP_on {
+      .cover-bg("../i/pumpFRP_on.png");
+    }
+
+    .pumpFRP_manual {
+      .cover-bg("../i/pumpFRP_manual.png");
+    }
+    .pumpFRP_alarm {
+      .cover-bg("../i/pumpFRP_alarm.png");
+    }
+  }
+
+  ////// Lamp //////
+  .lamp {
+    position: absolute;
+    top: 9px;
+    left: 3px;
+
+    width: 22px;
+    height: 22px;
+    border-radius: 11px;
+    border: solid 1px black;
+
+    &.lamp-cyan {
+      background: #55ddff;
+      background: radial-gradient(#55ddff, #0081b5);
+    }
+
+    &.lamp-gray {
+      background: #a9a9a9;
+      background: radial-gradient(#ffffff, #a9a9a9);
+    }
+
+    &.lamp-red {
+      background: #ff0000;
+      background: radial-gradient(#ffffff, #ff0000);
+    }
+
+    &.lamp-green {
+      background: #32cd32;
+      background: radial-gradient(#ffffff, #32cd32);
+    }
+  }
+
+  .analog-point {
+    font-family: Arial;
+    font-size: 14px;
+    font-weight: bold;
+    background: #fff;
+    border: solid 1px #bbb;
+    text-align: center;
+    vertical-align: middle;
+    display: table-cell;
+    line-height: 1.3;
+    height: 22px;
+  }
+
+  .analog-point-percent {
+    .analog-point()
+  }
+
+  .analog-point-wide {
+    .analog-point()
+  }
+
+  .manometer-complex {
+    .analog-point {
+      position: absolute;
+      right: 4px;
+      width: 60px;
+      height: 20px;
+    }
+  }
+
+  .thermometer-complex {
+    .analog-point {
+      position: absolute;
+      width: 60px;
+      left: 25px;
+      bottom: 3px;
+    }
+  }
+
+  ////// Driven2WayValveHorizontalView //////
+  .driven-2Way-h {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    .manual {
+      .cover-bg("../i/3way_valve_horizontal_manual_control.png");
+    }
+  }
+
+  ////// Driven2WayValveVerticalLeftView //////
+  .driven-2Way-vl {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    .manual {
+      .cover-bg("../i/3way_valve_vertical_left_manual_control.png");
+    }
+  }
+
+  ////// Driven3WayValveHorizontalBottomView //////
+  .driven-3Way-hb {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    .manual {
+      .cover-bg("../i/3way_valve_horizontal_bottom_manual_control.png");
+    }
+  }
+
+  ////// Driven3WayValveHorizontalView //////
+  .driven-3Way-h {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    .manual {
+      .cover-bg("../i/3way_valve_horizontal_manual_control.png");
+    }
+  }
+
+  ////// Driven3WayValveVerticalLeftView //////
+  .driven-3Way-vl {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    .manual {
+      .cover-bg("../i/3way_valve_vertical_left_manual_control.png");
+    }
+  }
+
+  ////// Driven3WayValveVerticalRightView //////
+  .driven-3Way-vr {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    .manual {
+      .cover-bg("../i/3way_valve_vertical_right_manual_control.png");
+    }
+  }
+
+  ////// GasValveHorizontalView //////
+  .valve-2way-gas {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    .valve-closed {
+      .cover-bg("../i/2way_valve_gas_close.png");
+      background-color: #fff;
+      background-position-y: -10px;
+    }
+  }
+
+  .ukke {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    .lamp {
+      display: block;
+      position: absolute;
+      top: 9px;
+      //left: 8px;
+      left: 5%;
+    }
+
+    .line2 {
+      display: block;
+      position: relative;
+      top: 52px;
+      .p1 {
+        position:absolute;
+        //left: 10px;
+        left: 5%;
+        width: 60px;
+      }
+      .p2 {
+        position:absolute;
+        //left: 74px;
+        left: 35.96%;
+        width: 58px;
+      }
+      .p3 {
+        position:absolute;
+        //left: 136px;
+        left: 66%;
+        width: 60px;
+      }
+    }
+
+    .line3 {
+      display: block;
+      position: relative;
+      top: 95px;
+      .p4 {
+        position:absolute;
+        //left: 10px;
+        left: 3.94%;
+        width: 60px;
+      }
+      .p5 {
+        position:absolute;
+        //left: 90px;
+        left: 43.35%;
+        width: 90px;
+      }
+    }
+
+    .invalid-flag {
+      right: -3px;
+      top: -3px;
+    }
+  }
+
+  .ukke-old {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    .lamp {
+      display: block;
+      position: absolute;
+      top: 9px;
+      //left: 11px;
+      left: 6%;
+    }
+
+    .line2 {
+      display: block;
+      position: relative;
+      top: 52px;
+      .p1 {
+        position:absolute;
+        //left: 15px;
+        left: 6%;
+        width: 60px;
+      }
+      .p2 {
+        position:absolute;
+        //left: 85px;
+        left: 36%;
+        width: 60px;
+      }
+      .p3 {
+        position:absolute;
+        //left: 156px;
+        left: 65.81%;
+        width: 60px;
+      }
+    }
+
+    .line3 {
+      display: block;
+      position: relative;
+      top: 95px;
+      .p4 {
+        position:absolute;
+        //left: 70px;
+        left: 30%;
+        width: 98px;
+      }
+    }
+
+    .invalid-flag {
+      right: -3px;
+      top: -3px;
+    }
+  }
+
+  .reg-2way-valve-state-h {
+    .cover-bg("../i/2way_valve_horizontalState_Inactive.png");
+    .reg-2way-valve-state-h_open {
+      .cover-bg("../i/2way_valve_horizontalState_Open.png");
+    }
+
+    .reg-2way-valve-state-h_close {
+      .cover-bg("../i/2way_valve_horizontalState_Close.png");
+    }
+  }
+
+  .driven-2way-valve-sh {
+    .cover-bg("../i/2way_valve_horizontalState_Inactive.png");
+
+    .valve-open {
+      .cover-bg("../i/2way_valve_horizontalState_Open.png");
+    }
+    .valve-close {
+      .cover-bg("../i/2way_valve_horizontalState_Close.png");
+    }
+    .valve-manual{
+      .cover-bg("../i/2way_valve_horizontalState_Manual.png");
+    }
+  }
+
+  .driven-2way-valve-sv {
+    .cover-bg("../i/2way_valve_VerticalState_Inactive.png");
+
+    .valve-open {
+      .cover-bg("../i/2way_valve_VerticalState_Open.png");
+    }
+    .valve-close {
+      .cover-bg("../i/2way_valve_VerticalState_Close.png");
+    }
+    .valve-manual{
+      .cover-bg("../i/2way_valve_VerticalState_Manual.png");
+    }
+  }
+  .driven-2way-valve-state-percents-h {
+    .cover-bg("../i/2way_valve_horizontalState_Inactive.png");
+
+    .valve-open {
+      .cover-bg("../i/2way_valve_horizontalState_Open.png");
+    }
+    .valve-close {
+      .cover-bg("../i/2way_valve_horizontalState_Close.png");
+    }
+    .valve-manual{
+      .cover-bg("../i/2way_valve_horizontalState_Manual.png");
+    }
+    .analog-point {
+      position: absolute;
+      width: 60px;
+      left: 25px;
+      top: 3px;
+    }
+  }
+  .auto-2way-valve-hv {
+    .cover-bg("../i/2way_valve_horizontal.png");
+  }
+
+  .cwp {
+    .cover-bg("../i/hvp.png");
+  }
+
+  .param-load-button {
+    >.btn {
+      opacity: 1;
+      padding: 3px 2px;
+      cursor: @cursor-disabled;
+      .box-shadow(none);
+    }
+  }
+}
